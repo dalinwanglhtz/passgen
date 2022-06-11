@@ -12,17 +12,26 @@ export default class Passgen extends LightningElement {
     handleGenerate() {
         let checkboxes = this.template.querySelectorAll('lightning-input');
         for(let i of checkboxes) {
-            console.log('checkbox: ', i.checked);
             switch(i.name) {
                 case 'lowerCase':
-                    this.characterString += i.checked ? this.lowerCaseCharString : '';
+                    if(i.checked) {
+                        this.characterString += this.characterString.indexOf(this.lowerCaseCharString) == -1 
+                        ? this.lowerCaseCharString : '';
+                    } else {
+                        this.characterString = this.characterString.replace(this.lowerCaseCharString, '');
+                    }
                     break;
                 case 'upperCase':
-                    this.characterString += i.checked ? this.upperCaseCharString : '';
+                    if(i.checked) {
+                        this.characterString += this.characterString.indexOf(this.upperCaseCharString) == -1 
+                        ? this.upperCaseCharString : '';
+                    } else {
+                        this.characterString = this.characterString.replace(this.upperCaseCharString, '');
+                    }
                     break;
             }
         }
-        console.log('char string: ', this.characterString);
+        
         this.passwordString = this.getChars(8);
     }
 
