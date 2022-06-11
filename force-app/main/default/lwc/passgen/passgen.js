@@ -29,6 +29,14 @@ export default class Passgen extends LightningElement {
                         this.characterString = this.characterString.replace(this.upperCaseCharString, '');
                     }
                     break;
+                case 'digit':
+                    if(i.checked) {
+                        this.characterString += this.characterString.indexOf(this.digitCharString) == -1 
+                        ? this.digitCharString : '';
+                    } else {
+                        this.characterString = this.characterString.replace(this.digitCharString, '');
+                    }
+                    break;
             }
         }
         
