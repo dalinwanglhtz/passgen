@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-m-around_small">
+            <lightning-input label="Password" type="text" value={passwordString}></lightning-input>
+        </div>
+        <lightning-layout class="slds-var-m-left_small">
+            <lightning-layout-item>
+                <lightning-input type="checkbox" label="Include Lower Case" name="lowerCase" data-id="checkbox"></lightning-input>
+                <lightning-input type="checkbox" label="Include Upper Case" name="upperCase" data-id="checkbox"></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-var-m-left_small slds-var-m-top_small">
+            <lightning-button label="Generate" onclick={handleGenerate}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
