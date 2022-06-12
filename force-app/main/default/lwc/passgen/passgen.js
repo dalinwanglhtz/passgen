@@ -11,36 +11,31 @@ export default class Passgen extends LightningElement {
 
     handleGenerate() {
         let checkboxes = this.template.querySelectorAll('lightning-input');
-        for(let i of checkboxes) {
-            switch(i.name) {
+        for(let cb of checkboxes) {
+            switch(cb.name) {
                 case 'lowerCase':
-                    if(i.checked) {
-                        this.characterString += this.characterString.indexOf(this.lowerCaseCharString) == -1 
-                        ? this.lowerCaseCharString : '';
-                    } else {
-                        this.characterString = this.characterString.replace(this.lowerCaseCharString, '');
-                    }
+                    this.updateCharString(this.lowerCaseCharString, cb);
                     break;
                 case 'upperCase':
-                    if(i.checked) {
-                        this.characterString += this.characterString.indexOf(this.upperCaseCharString) == -1 
-                        ? this.upperCaseCharString : '';
-                    } else {
-                        this.characterString = this.characterString.replace(this.upperCaseCharString, '');
-                    }
+                    this.updateCharString(this.upperCaseCharString, cb);
                     break;
                 case 'digit':
-                    if(i.checked) {
-                        this.characterString += this.characterString.indexOf(this.digitCharString) == -1 
-                        ? this.digitCharString : '';
-                    } else {
-                        this.characterString = this.characterString.replace(this.digitCharString, '');
-                    }
+                    this.updateCharString(this.digitCharString, cb);
                     break;
+                case 'special':
+                    this.updateCharString(this.specialCharString, cb);
             }
         }
         
         this.passwordString = this.getChars(8);
+    }
+
+    updateCharString(partString, checkbox) {
+        if(checkbox.checked) {
+            this.characterString += this.characterString.indexOf(partString) == -1 ? partString : '';
+        } else {
+            this.characterString = this.characterString.replace(partString, '');
+        }
     }
 
     getChars(num) {
