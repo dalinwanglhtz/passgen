@@ -9,6 +9,11 @@ export default class Passgen extends LightningElement {
     lowerCaseCharString = 'abcdefghijklmnopqrstuvwxyz';
     upperCaseCharString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
+    handleCopy() {
+        let pwdCopied = this.template.querySelector('.pwd');
+        this.copyText(pwdCopied.value);
+    }
+
     handleGenerate() {
         let checkboxes = this.template.querySelectorAll('lightning-input');
         for(let cb of checkboxes) {
@@ -44,5 +49,21 @@ export default class Passgen extends LightningElement {
             str += this.characterString.charAt(Math.floor(Math.random()*this.characterString.length));
         }
         return str;
+    }
+
+    copyText(text) {
+        if(navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        } else {
+            let textElement = document.createElement('textarea');
+            textElement.value = text;
+            document.body.appendChild(textElement);
+            textElement.focus();
+            textElement.select();
+            return new Promise((res, rej) => {
+                document.execCommand('copy') ? res() : rej();
+                textElement.remove();
+            });
+        }
     }
 }
