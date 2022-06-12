@@ -2,8 +2,10 @@
     <lightning-card>
         <div class="slds-grid slds-wrap slds-gutters slds-var-m-around_small">
             <div class="slds-col slds-size_4-of-4">
-                <lightning-input label="Password" type="text" class="pwd" value={passwordString}></lightning-input>
-                <lightning-button-icon icon-name="utility:copy" onclick={handleCopy}></lightning-button-icon>
+                <button style="width: 100%;" class="slds-button slds-button_icon slds-input__icon slds-input__icon_right">
+                    <lightning-input style="width: 100%;" type="text" class="pwd" value={passwordString}></lightning-input>&nbsp;
+                    <lightning-button-icon class="slds-var-m-top_small" icon-name="utility:copy" onclick={handleCopy}></lightning-button-icon>
+                </button>
             </div>
             <div class="slds-col slds-size_3-of-4 slds-var-m-top_small">
                 <lightning-input type="checkbox" label="Include Lower Case" name="lowerCase"></lightning-input>
