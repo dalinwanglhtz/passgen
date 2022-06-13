@@ -2,12 +2,17 @@ import { LightningElement } from 'lwc';
 
 export default class Passgen extends LightningElement {
     passwordString;
+    numDigits = 10;
 
     characterString = '';
     specialCharString = '!@#$%^&*()';
     digitCharString = '0123456789';
     lowerCaseCharString = 'abcdefghijklmnopqrstuvwxyz';
     upperCaseCharString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    handleSlider(event) {
+        this.numDigits = event.target.value;
+    }
 
     handleCopy() {
         let pwdCopied = this.template.querySelector('.pwd');
@@ -32,7 +37,7 @@ export default class Passgen extends LightningElement {
             }
         }
         
-        this.passwordString = this.getChars(8);
+        this.passwordString = this.getChars(this.numDigits);
     }
 
     updateCharString(partString, checkbox) {

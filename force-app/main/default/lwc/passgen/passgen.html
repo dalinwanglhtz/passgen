@@ -7,6 +7,10 @@
                     <lightning-button-icon class="slds-var-m-top_small" icon-name="utility:copy" onclick={handleCopy}></lightning-button-icon>
                 </button>
             </div>
+            <div class="slds-col slds-size_4-of-4 slds-var-m-top_small slidercontainer">
+                <input type="range" min="1" max="10" class="slider" oninput={handleSlider}>
+                <p>Generate password of {numDigits} digits</p>
+            </div>
             <div class="slds-col slds-size_3-of-4 slds-var-m-top_small">
                 <lightning-input type="checkbox" label="Include Lower Case" name="lowerCase" checked></lightning-input>
                 <lightning-input type="checkbox" label="Include Upper Case" name="upperCase" checked></lightning-input>
