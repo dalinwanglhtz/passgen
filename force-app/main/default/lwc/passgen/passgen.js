@@ -5,7 +5,7 @@ export default class Passgen extends LightningElement {
     numChars = 10;
 
     characterString = '';
-    specialCharString = '!@#$%^&*()';
+    specialCharString = '!@#$%^&*<>';
     digitCharString = '0123456789';
     lowerCaseCharString = 'abcdefghijklmnopqrstuvwxyz';
     upperCaseCharString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
