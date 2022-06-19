@@ -2,7 +2,7 @@ import { LightningElement } from 'lwc';
 
 export default class Passgen extends LightningElement {
     passwordString;
-    numChars = 10;
+    numChars = 30;
 
     characterString = '';
     specialCharString = '!@#$%^&*<>';
